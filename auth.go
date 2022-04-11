@@ -417,6 +417,9 @@ type MCProfile struct {
 	Expires time.Time
 }
 
+func (p *MCProfile) Expired() bool {
+	return time.Now().After(p.Expires)
+}
 func (p *MCProfile) SelectedProfile() (ID, Name string) {
 	return p.ID, p.Name
 }
