@@ -143,7 +143,6 @@ func MSOAuth(clientID string) (*MSOToken, error) {
 		if e, ok := jToken["expires_in"].(float64); !ok {
 			return nil, fmt.Errorf("expires_in not found in response")
 		} else {
-			fmt.Printf("expires_in: %f\n", e)
 			msoToken.Expires = time.Now().Add(time.Second * time.Duration(e))
 		}
 		if t, ok := jToken["access_token"].(string); !ok {
@@ -444,6 +443,7 @@ func GetMCProfile(msoToken *MSOToken) (*MCProfile, error) {
 	if err != nil {
 		return nil, fmt.Errorf("MCAuth: %w", err)
 	}
+	fmt.Printf("%+#v\n", mcToken)
 	// Step 4 MC Profile
 	req, err := http.NewRequest("GET", "https://api.minecraftservices.com/minecraft/profile", nil)
 	if err != nil {
