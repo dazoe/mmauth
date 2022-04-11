@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"mmauth"
 	"os"
 	"time"
+
+	"github.com/dazoe/mmauth"
 )
 
 func main() {
